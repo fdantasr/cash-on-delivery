@@ -38,7 +38,7 @@ export const Navbar = ({}: NavbarProps) => {
           <div className='text-base opacity-100'>
             <a className='' href='./'>
               <p className='text-center text-2xl font-medium uppercase leading-[38.4px]'>
-              Street
+              SuperPack
               </p>
             </a>
           </div>
