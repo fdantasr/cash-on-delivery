@@ -30,13 +30,13 @@ export const CardProduct = ({
       </a>
       <div className='mt-4 px-5 pb-5'>
         <a href='#'>
-          <h5 className='text-xl tracking-tight text-[#0b3b3c]'>
+          <h5 className='text-lg tracking-tight text-[#0b3b3c]'>
             {productName}
           </h5>
         </a>
         <div className='mb-5 mt-2 flex items-center justify-between'>
           <p>
-            <span className='text-4xl font-bold text-[#0b3b3c]'>
+            <span className='text-3xl font-bold text-[#0b3b3c]'>
               R$ {totalPrice.toFixed(2)}
             </span>
             <span className='text-sm text-[#0b3b3c] line-through'>

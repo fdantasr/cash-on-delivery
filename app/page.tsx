@@ -31,8 +31,8 @@ const Page = async () => {
                 urlVideo={item.video_url}
               />
               <div className='flex flex-col space-y-16'>
-                <h4 className='mt-24 text-[34px] font-semibold uppercase leading-[72px] text-[#0b3b3c] md:text-[48px] lg:text-[60px]'>
-                  Produto
+                <h4 className='mt-24 text-[34px] font-bold uppercase tracking-[-3.04px] leading-[91.2px] text-[#0b3b3c] md:text-[48px] lg:text-[60px]'>
+                  Tratamentos
                 </h4>
                 <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
                   {item.products.map((product) => (

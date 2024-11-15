@@ -22,14 +22,14 @@ export const Vsl = ({ title, subtitle, urlVideo }: VslProps) => {
   return (
     <div className='px-18 relative z-20 mt-20 w-full'>
       {/* Container flex para centralizar o título */}
-      <div className='mb-12 flex flex-col gap-2 w-full items-start justify-center'>
+      <div className='mb-12 flex w-full flex-col items-start justify-center gap-2'>
         <h3
-          className={`${monospaceAI.className} max-w-xs text-2xl/7 font-medium text-[#0b3b3c] lg:max-w-[39.56rem] lg:text-4xl`}
+          className={`${monospaceAI.className} max-w-xs text-2xl/7 font-medium text-[#0b3b3c] lg:max-w-[39.56rem] lg:text-3xl`}
         >
           {title}
         </h3>
 
-        <span className='mt-4 max-w-[41.875rem] text-sm text-[#6d8a83] lg:mt-8 lg:text-xl'>
+        <span className='mt-4 max-w-[41.875rem] text-sm text-[#6d8a83] lg:mt-8 lg:text-base'>
           {subtitle}
         </span>
       </div>
@@ -54,12 +54,16 @@ export const Vsl = ({ title, subtitle, urlVideo }: VslProps) => {
               </div>
             ) : (
               <iframe
-              src={urlVideo ? `https://www.youtube.com/embed/${urlVideo.split('/').pop()?.split('?')[0]}` : ''}
-              frameBorder="0"
-              className="h-full w-full min-w-full"
-              allow="autoplay; fullscreen"
-              allowFullScreen
-            ></iframe>
+                src={
+                  urlVideo
+                    ? `https://www.youtube.com/embed/${urlVideo.split('/').pop()?.split('?')[0]}`
+                    : ''
+                }
+                frameBorder='0'
+                className='h-full w-full min-w-full'
+                allow='autoplay; fullscreen'
+                allowFullScreen
+              ></iframe>
             )}
           </div>
 
@@ -92,8 +96,6 @@ export const Vsl = ({ title, subtitle, urlVideo }: VslProps) => {
           )}
         </div>
       </div>
-
-      
     </div>
   );
 };
