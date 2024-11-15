@@ -14,7 +14,7 @@ interface NavbarProps {}
 
 export const Navbar = ({}: NavbarProps) => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const menuItems = ['HOMENS', 'MULHERES', 'CRIANÇAS'];
+  const menuItems = ['TRATAMENTOS', 'APRENDA', 'BLOG'];
 
   return (
     <div className='fixed left-0 top-0 z-30 w-full'>
