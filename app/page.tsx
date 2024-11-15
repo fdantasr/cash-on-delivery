@@ -21,7 +21,7 @@ const Page = async () => {
       <Navbar />
       <Hero />
       <Parteners />
-      <div className='max-w-[1440px] px-[30px]'>
+      <div className='max-w-[1440px] px-[30px] mb-24'>
         <div>
           {data.map((item) => (
             <div key={item.checkout_id}>
@@ -31,10 +31,10 @@ const Page = async () => {
                 urlVideo={item.video_url}
               />
               <div className='flex flex-col space-y-16'>
-                <h4 className='mt-24 text-[34px] text-[#0b3b3c] font-semibold uppercase leading-[72px] md:text-[48px] lg:text-[60px]'>
+                <h4 className='mt-24 text-[34px] font-semibold uppercase leading-[72px] text-[#0b3b3c] md:text-[48px] lg:text-[60px]'>
                   Produto
                 </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
                   {item.products.map((product) => (
                     <CardProduct
                       key={product.product_id}

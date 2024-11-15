@@ -14,7 +14,7 @@ export const CardProduct = ({
   imageSrc,
 }: CardProductProps) => {
   return (
-    <div className='relative flex w-full md:max-w-xs flex-col overflow-hidden rounded-md  bg-card'>
+    <div className='relative flex w-full flex-col overflow-hidden rounded-md bg-card md:max-w-xs'>
       <a
         className='relative mx-3 mt-3 flex h-60 overflow-hidden rounded-md border border-[#e3e1df]'
         href='#'
@@ -46,7 +46,7 @@ export const CardProduct = ({
         </div>
         <a
           href='#'
-          className='flex items-center justify-center  bg-[#0b3b3c] px-5 py-2.5 text-center text-sm font-semibold text-white focus:outline-none focus:ring-4'
+          className='flex items-center justify-center bg-[#0b3b3c] px-5 py-2.5 text-center text-sm font-semibold text-white focus:outline-none focus:ring-4'
         >
           Comprar agora
         </a>
