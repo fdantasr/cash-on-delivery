@@ -1,6 +1,7 @@
 import { Toaster } from '@/components/ui/sonner';
+import { queryClient } from '@/utils/queryClient';
+import { QueryClientProvider } from '@tanstack/react-query';
 import { ThemeProvider } from 'next-themes';
-
 import './globals.css';
 
 const defaultUrl = process.env.VERCEL_URL
@@ -12,7 +13,6 @@ export const metadata = {
   title: 'Next.js and Supabase Starter Kit',
   description: 'The fastest way to build apps with Next.js and Supabase',
 };
-
 
 export default function RootLayout({
   children,
@@ -28,7 +28,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <QueryClientProvider client={queryClient}>
+            {children}
+          </QueryClientProvider>
           <Toaster />
         </ThemeProvider>
       </body>
