@@ -21,7 +21,7 @@ const Page = async () => {
       <Navbar />
       <Hero />
       <Parteners />
-      <div className='max-w-[1440px] px-[30px] mb-24'>
+      <div className='mb-24 max-w-[1440px] px-[30px]'>
         <div>
           {data.map((item) => (
             <div key={item.checkout_id}>
