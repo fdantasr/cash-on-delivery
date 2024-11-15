@@ -1,7 +1,7 @@
 import { Toaster } from '@/components/ui/sonner';
-import { queryClient } from '@/utils/queryClient';
-import { QueryClientProvider } from '@tanstack/react-query';
 import { ThemeProvider } from 'next-themes';
+
+import Provider from '@/components/Provider';
 import './globals.css';
 
 const defaultUrl = process.env.VERCEL_URL
@@ -28,9 +28,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <QueryClientProvider client={queryClient}>
-            {children}
-          </QueryClientProvider>
+          <Provider>{children}</Provider>
           <Toaster />
         </ThemeProvider>
       </body>
