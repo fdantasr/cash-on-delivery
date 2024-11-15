@@ -1,9 +1,18 @@
 'use client';
+import { Montserrat } from 'next/font/google';
 import { useState } from 'react';
+interface VslProps {
+  title: string;
+  subtitle: string;
+  urlVideo: string;
+}
 
-interface VslProps {}
+const monospaceAI = Montserrat({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+});
 
-export const Vsl = ({}: VslProps) => {
+export const Vsl = ({ title, subtitle, urlVideo }: VslProps) => {
   const [isVideoClicked, setIsVideoClicked] = useState(false);
 
   const handlePlayClick = () => {
@@ -11,8 +20,21 @@ export const Vsl = ({}: VslProps) => {
   };
 
   return (
-    <div className='px-18 relative z-20 mt-20'>
-      <div className='relative z-20 mx-auto w-full max-w-[1256px] px-5'>
+    <div className='px-18 relative z-20 mt-20 w-full'>
+      {/* Container flex para centralizar o título */}
+      <div className='mb-12 flex flex-col gap-2 w-full items-start justify-center'>
+        <h3
+          className={`${monospaceAI.className} max-w-xs text-2xl/7 font-medium text-[#0b3b3c] lg:max-w-[39.56rem] lg:text-4xl`}
+        >
+          {title}
+        </h3>
+
+        <span className='mt-4 max-w-[41.875rem] text-sm text-[#6d8a83] lg:mt-8 lg:text-xl'>
+          {subtitle}
+        </span>
+      </div>
+
+      <div className='relative z-20 mx-auto w-full max-w-[1256px]'>
         <div className='relative z-20 overflow-hidden rounded-t-[10px] border-[10px] border-b-0 border-[#f3f1ee] bg-black'>
           <div className='aspect-video h-full w-full max-w-[1216px] lg:min-h-[672.75px]'>
             {!isVideoClicked ? (
@@ -23,22 +45,21 @@ export const Vsl = ({}: VslProps) => {
                   loop
                   muted
                   playsInline
-                  webkit-playsinline
-                  x5-playsinline
+                  webkit-playsinline='true'
+                  x5-playsinline='true'
                   src='https://videos.pexels.com/video-files/7326020/7326020-hd_1920_1080_24fps.mp4'
                   style={{ width: '100%', height: '100%' }}
                 />
-                {/* Aplica o fundo escuro sobre o vídeo inicial */}
                 <div className='absolute top-0 h-full w-full bg-black opacity-60'></div>
               </div>
             ) : (
               <iframe
-                src='https://www.youtube.com/embed/5i0vYvWcaGo?autoplay=1'
-                frameBorder='0'
-                className='h-full w-full min-w-full'
-                allow='autoplay; fullscreen'
-                allowFullScreen
-              ></iframe>
+              src={urlVideo ? `https://www.youtube.com/embed/${urlVideo.split('/').pop()?.split('?')[0]}` : ''}
+              frameBorder="0"
+              className="h-full w-full min-w-full"
+              allow="autoplay; fullscreen"
+              allowFullScreen
+            ></iframe>
             )}
           </div>
 
@@ -71,7 +92,8 @@ export const Vsl = ({}: VslProps) => {
           )}
         </div>
       </div>
-      <div className='absolute bottom-0 h-2/3 w-full bg-foreground'></div>
+
+      
     </div>
   );
 };

@@ -1,3 +1,3 @@
-export * from './blocksActions';
-export * from './forgotPasswordAction';
-export * from './projectActions';
+
+export * from './getData';
+
