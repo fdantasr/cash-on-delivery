@@ -4,6 +4,7 @@ interface CardProductProps {
   discount: number;
   freight: string;
   imageSrc: string;
+  bestChoice: boolean;
 }
 
 export const CardProduct = ({
@@ -12,6 +13,7 @@ export const CardProduct = ({
   discount,
   freight,
   imageSrc,
+  bestChoice,
 }: CardProductProps) => {
   return (
     <div className='relative flex w-full flex-col overflow-hidden rounded-md bg-card md:max-w-xs'>

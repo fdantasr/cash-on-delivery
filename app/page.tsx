@@ -30,8 +30,8 @@ const Page = async () => {
                 subtitle={item.video_sub_headline}
                 urlVideo={item.video_url}
               />
-              <div className='flex flex-col space-y-16'>
-                <h4 className='mt-24 text-[34px] font-bold uppercase tracking-[-3.04px] leading-[91.2px] text-[#0b3b3c] md:text-[48px] lg:text-[60px]'>
+              <div className='flex flex-col space-y-8'>
+                <h4 className='mt-24 text-[34px] font-bold leading-[91.2px] tracking-[-3.04px] text-[#0b3b3c] '>
                   Tratamentos
                 </h4>
                 <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
@@ -43,8 +43,30 @@ const Page = async () => {
                       discount={product.discount}
                       freight={product.freight}
                       imageSrc={product.image_url}
+                      bestChoice={product.best_choice}
                     />
                   ))}
+                </div>
+              </div>
+
+              <div className='flex flex-col space-y-8'>
+                <h4 className='mt-24 text-[34px] font-bold  leading-[91.2px] tracking-[-3.04px] text-[#0b3b3c] '>
+                 Mais vendidos
+                </h4>
+                <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+                  {item.products
+                    .filter((product) => product.best_choice) 
+                    .map((product) => (
+                      <CardProduct
+                        key={product.product_id}
+                        productName={product.name}
+                        totalPrice={product.price}
+                        discount={product.discount}
+                        freight={product.freight}
+                        imageSrc={product.image_url}
+                        bestChoice={product.best_choice}
+                      />
+                    ))}
                 </div>
               </div>
             </div>
