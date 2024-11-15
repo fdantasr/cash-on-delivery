@@ -4,9 +4,9 @@ import { Hero } from '@/components/Hero';
 import { Navbar } from '@/components/Navbar';
 import { Parteners } from '@/components/Parteners';
 import { Vsl } from '@/components/Vsl';
-import { Afacad } from 'next/font/google';
+import { Sora } from 'next/font/google';
 
-const afacad = Afacad({
+const afacad = Sora({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
 });

@@ -20,14 +20,14 @@ export const Navbar = ({}: NavbarProps) => {
     <div className='fixed left-0 top-0 z-30 w-full'>
       <Banner />
       <nav
-        className={`relative flex flex-col items-center justify-center gap-3 overflow-visible bg-white bg-opacity-50 backdrop-blur-lg ${montserrat.className}`}
+        className={`relative flex flex-col items-center justify-center gap-3 overflow-visible bg-white bg-opacity-50 backdrop-blur-lg `}
       >
         <header className='relative z-[9] flex w-full max-w-[1440px] items-center justify-between p-[20px_30px_0] py-4'>
           {/* Menu for Desktop */}
           <div className='hidden w-1/5 items-center justify-center gap-5 sm:flex'>
             {menuItems.map((item) => (
               <div key={item} className='flex items-center justify-center'>
-                <p className='text-base font-medium leading-[28.8px] tracking-[-0.16px] text-black'>
+                <p className='text-base  leading-[28.8px] tracking-[-0.16px] text-black'>
                   {item}
                 </p>
               </div>
