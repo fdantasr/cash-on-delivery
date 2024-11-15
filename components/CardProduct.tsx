@@ -1,3 +1,15 @@
+import { Button } from './ui/button';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from './ui/dialog';
+import { Input } from './ui/input';
+
 interface CardProductProps {
   productName: string;
   totalPrice: number;
@@ -5,6 +17,7 @@ interface CardProductProps {
   freight: string;
   imageSrc: string;
   bestChoice: boolean;
+  idProduct: number;
 }
 
 export const CardProduct = ({
@@ -13,7 +26,7 @@ export const CardProduct = ({
   discount,
   freight,
   imageSrc,
-  bestChoice,
+  idProduct,
 }: CardProductProps) => {
   return (
     <div className='relative flex w-full flex-col overflow-hidden rounded-md bg-card md:max-w-xs'>
@@ -46,12 +59,93 @@ export const CardProduct = ({
             </span>
           </p>
         </div>
-        <a
-          href='#'
-          className='flex items-center justify-center bg-[#0b3b3c] px-5 py-2.5 text-center text-sm font-semibold text-white focus:outline-none focus:ring-4'
-        >
-          Comprar agora
-        </a>
+        <Dialog>
+          <DialogTrigger asChild>
+            <a className='flex cursor-pointer items-center justify-center bg-[#0b3b3c] px-5 py-2.5 text-center text-sm font-semibold text-white hover:bg-opacity-80 focus:outline-none focus:ring-4'>
+              Comprar agora
+            </a>
+          </DialogTrigger>
+          <DialogContent className='!p-6'>
+            <DialogHeader>
+              <DialogTitle className='text-lg'>
+                Are you absolutely sure?
+              </DialogTitle>
+              <DialogDescription>
+                Você só será cobrado na entrega do produto.
+
+              </DialogDescription>
+            </DialogHeader>
+            <div className='grid gap-4'>
+              <div className='grid grid-cols-1 items-center gap-4'>
+                <Input
+                  id='name'
+                  placeholder='Name'
+                  defaultValue='Pedro Duarte'
+                  className='col-span-1 !h-[52px] border-[#e3e1df]'
+                />
+              </div>
+              <div className='grid grid-cols-1 items-center gap-4'>
+                <Input
+                  id='email'
+                  placeholder='Email'
+                  defaultValue='pedro.duarte@email.com'
+                  className='col-span-1 !h-[52px] border-[#e3e1df]'
+                />
+              </div>
+              <div className='grid grid-cols-1 items-center gap-4'>
+                <Input
+                  id='phone_number'
+                  placeholder='Phone Number'
+                  defaultValue='+55 11 91234-5678'
+                  className='col-span-1 !h-[52px] border-[#e3e1df]'
+                />
+              </div>
+              <div className='grid grid-cols-1 items-center gap-4'>
+                <Input
+                  id='street_number'
+                  placeholder='Street Number'
+                  defaultValue='123'
+                  className='col-span-1 !h-[52px] border-[#e3e1df]'
+                />
+              </div>
+              <div className='grid grid-cols-1 items-center gap-4'>
+                <Input
+                  id='street'
+                  placeholder='Street'
+                  defaultValue='Rua Exemplo'
+                  className='col-span-1 !h-[52px] border-[#e3e1df]'
+                />
+              </div>
+              <div className='grid grid-cols-1 items-center gap-4'>
+                <Input
+                  id='district'
+                  placeholder='District'
+                  defaultValue='Centro'
+                  className='col-span-1 !h-[52px] border-[#e3e1df]'
+                />
+              </div>
+              <div className='grid grid-cols-1 items-center gap-4'>
+                <Input
+                  id='city'
+                  placeholder='City'
+                  defaultValue='São Paulo'
+                  className='col-span-1 !h-[52px] border-[#e3e1df]'
+                />
+              </div>
+              <div className='grid grid-cols-1 items-center gap-4'>
+                <Input
+                  id='state'
+                  placeholder='State'
+                  defaultValue='SP'
+                  className='col-span-1 !h-[52px] border-[#e3e1df]'
+                />
+              </div>
+            </div>
+            <DialogFooter>
+              <Button type='submit' className='bg-[#0b3b3c] w-full text-base text-white h-[54px]'>Confirmar pedido</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </div>
     </div>
   );

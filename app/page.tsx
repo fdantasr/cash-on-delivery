@@ -44,6 +44,7 @@ const Page = async () => {
                       freight={product.freight}
                       imageSrc={product.image_url}
                       bestChoice={product.best_choice}
+                      idProduct={product.product_id}
                     />
                   ))}
                 </div>
@@ -65,6 +66,7 @@ const Page = async () => {
                         freight={product.freight}
                         imageSrc={product.image_url}
                         bestChoice={product.best_choice}
+                        idProduct={product.product_id}
                       />
                     ))}
                 </div>
