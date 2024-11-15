@@ -1,4 +1,5 @@
 import { getCheckoutData } from '@/actions';
+import { CardProduct } from '@/components/CardProduct';
 import { Hero } from '@/components/Hero';
 import { Navbar } from '@/components/Navbar';
 import { Parteners } from '@/components/Parteners';
@@ -15,12 +16,12 @@ const Page = async () => {
 
   return (
     <div
-      className={`${afacad.className} relative flex h-min min-h-[100vh] w-auto flex-col content-center items-center justify-start gap-0 overflow-hidden bg-white p-0`}
+      className={`${afacad.className} relative flex h-min min-h-[100vh] w-auto flex-col content-center items-center justify-start gap-0 overflow-hidden p-0`}
     >
       <Navbar />
       <Hero />
       <Parteners />
-      <div className=''>
+      <div className='max-w-[1440px] px-[30px]'>
         <div>
           {data.map((item) => (
             <div key={item.checkout_id}>
@@ -29,25 +30,22 @@ const Page = async () => {
                 subtitle={item.video_sub_headline}
                 urlVideo={item.video_url}
               />
-              <div>
-                <h4 className='mt-4 font-semibold'>Produtos:</h4>
-                <ul>
+              <div className='flex flex-col space-y-16'>
+                <h4 className='mt-24 text-[34px] text-[#0b3b3c] font-semibold uppercase leading-[72px] md:text-[48px] lg:text-[60px]'>
+                  Produto
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                   {item.products.map((product) => (
-                    <li key={product.product_id} className='mt-2'>
-                      <div>
-                        <img
-                          src={product.image_url}
-                          alt={product.name}
-                          className='h-20 w-20 object-cover'
-                        />
-                      </div>
-                      <p>{product.name}</p>
-                      <p>Preço: R${product.price.toFixed(2)}</p>
-                      <p>Desconto: R${product.discount.toFixed(2)}</p>
-                      <p>{product.freight}</p>
-                    </li>
+                    <CardProduct
+                      key={product.product_id}
+                      productName={product.name}
+                      totalPrice={product.price}
+                      discount={product.discount}
+                      freight={product.freight}
+                      imageSrc={product.image_url}
+                    />
                   ))}
-                </ul>
+                </div>
               </div>
             </div>
           ))}

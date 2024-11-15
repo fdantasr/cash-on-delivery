@@ -47,7 +47,7 @@ export const Vsl = ({ title, subtitle, urlVideo }: VslProps) => {
                   playsInline
                   webkit-playsinline='true'
                   x5-playsinline='true'
-                  src='https://videos.pexels.com/video-files/7326020/7326020-hd_1920_1080_24fps.mp4'
+                  src='https://videos.pexels.com/video-files/7672115/7672115-uhd_2732_1440_25fps.mp4'
                   style={{ width: '100%', height: '100%' }}
                 />
                 <div className='absolute top-0 h-full w-full bg-black opacity-60'></div>

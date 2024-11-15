@@ -124,9 +124,9 @@ body {
 
 @layer base {
   :root {
-    --background: #ffffff;
+    --background: #f5f5f5;
     --foreground: #f6f6f399;
-    --card: #f1f0ee;
+    --card: #FFFFFF;
     --card-foreground: #f1f0ee;
     --popover: #121212;
     --popover-foreground: #121212;
