@@ -1,8 +1,8 @@
 import { Hero } from '@/components/Hero';
 import { Navbar } from '@/components/Navbar';
 import { Parteners } from '@/components/Parteners';
+import { Vsl } from '@/components/Vsl';
 import { Afacad } from 'next/font/google';
-
 
 const afacad = Afacad({
   subsets: ['latin'],
@@ -17,7 +17,7 @@ const Page = () => {
       <Navbar />
       <Hero />
       <Parteners />
-      
+      <Vsl />
     </div>
   );
 };

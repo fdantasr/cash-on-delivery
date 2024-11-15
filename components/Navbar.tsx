@@ -17,7 +17,7 @@ export const Navbar = ({}: NavbarProps) => {
   const menuItems = ['HOMENS', 'MULHERES', 'CRIANÇAS'];
 
   return (
-    <div className='fixed left-0 top-0 z-10 w-full'>
+    <div className='fixed left-0 top-0 z-30 w-full'>
       <Banner />
       <nav
         className={`relative flex flex-col items-center justify-center gap-3 overflow-visible bg-white bg-opacity-50 backdrop-blur-lg ${montserrat.className}`}
@@ -38,7 +38,7 @@ export const Navbar = ({}: NavbarProps) => {
           <div className='text-base opacity-100'>
             <a className='' href='./'>
               <p className='text-center text-2xl font-medium uppercase leading-[38.4px]'>
-                Fashion
+              Street
               </p>
             </a>
           </div>
