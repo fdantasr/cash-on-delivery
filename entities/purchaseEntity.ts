@@ -7,6 +7,6 @@ export interface PurchaseFormData {
     district: string;
     city: string;
     state: string;
-    // product_id: number;
+    product_id: number;
   }
   
