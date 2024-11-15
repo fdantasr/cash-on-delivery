@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* .drag-handle{
+ background-color: #f1f1f1 !important;
+} */
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer utilities {
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+/* A sidebar mantém o conteúdo visível */
+.custom-scrollbar {
+  overflow-y: hidden; /* Inicialmente, não mostra a barra de rolagem */
+  scrollbar-width: thin; /* Para navegadores como Firefox */
+  scrollbar-color: rgba(255, 255, 255, 0.5) transparent; /* Para navegadores como Firefox */
+  position: relative; /* Para garantir que a área de rolagem tenha controle de hover */
+}
+
+/* Estilo do próprio scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px; /* Largura do scrollbar */
+  opacity: 0; /* Inicialmente, a barra de rolagem está invisível */
+  transition: opacity 0.3s ease; /* Transição suave */
+}
+
+/* Estilo da parte do "track", onde o scroll se move */
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent; /* Fundo transparente */
+  border-radius: 10px; /* Bordas arredondadas */
+}
+
+/* Estilo da parte "thumb", que é o indicador de rolagem */
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5); /* Cor do thumb */
+  border-radius: 10px; /* Bordas arredondadas */
+  transition: background-color 0.3s ease; /* Animação suave para mudança de cor */
+}
+
+/* Hover sobre o thumb (quando o usuário passa o mouse sobre o scrollbar) */
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.8); /* Cor mais forte ao passar o mouse */
+}
+
+/* Exibir o scrollbar quando o mouse passar sobre o contêiner */
+.custom-scrollbar:hover {
+  overflow-y: auto; /* Permite rolagem vertical quando o mouse estiver sobre o contêiner */
+}
+
+/* Exibir a barra de rolagem quando o mouse passar sobre o contêiner */
+.custom-scrollbar:hover::-webkit-scrollbar {
+  opacity: 1; /* Exibe a barra de rolagem quando o mouse estiver sobre o contêiner */
+}
+
+
+
+
+.customchat-scrollbar {
+  overflow-y: auto; /* Permite rolagem apenas quando necessário */
+  scrollbar-width: thin; /* Para Firefox */
+  scrollbar-color: rgba(255, 255, 255, 0.5) transparent; /* Para Firefox */
+  position: relative; /* Garantir controle da área de rolagem */
+}
+
+/* Estilo do próprio scrollbar */
+.customchat-scrollbar::-webkit-scrollbar {
+  width: 6px; /* Largura da barra de rolagem */
+  height: 6px; /* Largura do scroll horizontal (se necessário) */
+  opacity: 0; /* Inicialmente invisível */
+  transition: opacity 0.3s ease; /* Transição suave para a visibilidade */
+}
+
+/* Estilo da parte do "track", onde o scroll se move */
+.customchat-scrollbar::-webkit-scrollbar-track {
+  background: transparent; /* Fundo transparente */
+  border-radius: 10px; /* Bordas arredondadas */
+}
+
+/* Estilo da parte "thumb", onde o indicador de rolagem é */
+.customchat-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5); /* Cor do indicador */
+  border-radius: 10px; /* Bordas arredondadas */
+  transition: background-color 0.3s ease; /* Animação suave para mudança de cor */
+}
+
+/* Hover sobre o thumb */
+.customchat-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.8); /* Cor mais intensa no hover */
+}
+
+/* Exibir a barra de rolagem quando o mouse passar sobre o contêiner */
+.customchat-scrollbar:hover::-webkit-scrollbar {
+  opacity: 1; /* Torna a barra de rolagem visível no hover */
+}
+
+}
+
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #f6f6f399;
+    --card: #f1f0ee;
+    --card-foreground: #f1f0ee;
+    --popover: #121212;
+    --popover-foreground: #121212;
+    --primary: #fafafa;
+    --primary-foreground: #18181b;
+    --secondary: #111111;
+    --secondary-foreground: #f2f1ef;
+    --muted: #878787;
+    --muted-foreground:  #606060;
+    --accent: #121212;
+    --accent-foreground: #34D399;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border:#dbdad7;
+    --input: #2b2b2b;
+    --ring: #2b2b2b;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: #121212;
+    --foreground: #151515;
+    --card: #1c1c1c;
+    --card-foreground: #171717;
+    --popover: #121212;
+    --popover-foreground: #1f1f1f;
+    --primary: #fafafa;
+    --primary-foreground: #18181b;
+    --secondary: #111111;
+    --secondary-foreground: #1D1D1D;
+    --muted: #878787;
+    --muted-foreground:  #606060;
+    --accent: #fafafa;
+    --accent-foreground: #34D399;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border:#2b2b2b;
+    --input: #2b2b2b;
+    --ring: #2b2b2b;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-primary;
+  }
+}
