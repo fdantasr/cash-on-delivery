@@ -31,14 +31,18 @@ export async function submitPurchaseForm(data: PurchaseFormData): Promise<Purcha
 
     console.log("Resposta da API:", status, res);
 
-    if (status === 'success' && res?.object) {
-      return res.object;  
+    if (status === 'success') {
+      if (res?.object) {
+        return res.object; // Retorna o objeto, se existir
+      } else {
+        console.warn('API não retornou `object`. Reconstruindo dados...');
+        return data; // Retorna os dados enviados como fallback
+      }
     } else {
-   
-      throw new Error("Erro ao processar a compra.");
+      throw new Error(res?.error || "Erro ao processar a compra.");
     }
   } catch (error) {
     console.error('Erro ao buscar dados de checkout:', error);
-    throw error; 
+    throw error;
   }
 }

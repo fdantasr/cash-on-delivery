@@ -26,6 +26,7 @@ const orderSchema = z.object({
   district: z.string().nonempty('Bairro é obrigatório'),
   city: z.string().nonempty('Cidade é obrigatória'),
   state: z.string().nonempty('Estado é obrigatório'),
+  product_id: z.number().optional(),
   
 });
 
@@ -57,26 +58,38 @@ export const CardProduct = ({
     resolver: zodResolver(orderSchema),
   });
 
+  // const handleSubmit = hookFormHandleSubmit(
+  //   (data) => {
+  //     console.log('Formulário enviado com sucesso!');
+  //     console.log('Dados do formulário:', data);
+  //   },
+  //   (errors) => {
+  //     console.error('Erros encontrados no formulário:', errors);
+  //   }
+  // );
+
+  const { mutateAsync, isPending } = useOrder();
+
   const handleSubmit = hookFormHandleSubmit(
-    (data) => {
-      console.log('Formulário enviado com sucesso!');
-      console.log('Dados do formulário:', data);
+    async (data) => {
+      try {
+        const payload = { ...data, product_id: idProduct };
+        const response = await mutateAsync(payload);
+        console.log('Compra realizada com sucesso!', response);
+  
+        // Exibir os dados retornados
+        alert(
+          `Compra criada com sucesso:\n${JSON.stringify(response, null, 2)}`
+        );
+      } catch (error) {
+        console.error('Erro ao realizar a compra', error);
+      }
     },
     (errors) => {
       console.error('Erros encontrados no formulário:', errors);
     }
   );
-  // Pegando o mutateAsync de useOrder
-  const { mutateAsync, isPending } = useOrder();
-
-  // const handleSubmit = hookFormHandleSubmit(async (data) => {
-  //   try {
-  //     await mutateAsync(data);
-  //     console.log('Compra realizada com sucesso!');
-  //   } catch (error) {
-  //     console.error('Erro ao realizar a compra', error);
-  //   }
-  // });
+  
 
   return (
     <div className='relative flex w-full flex-col overflow-hidden rounded-md bg-card md:max-w-xs'>
