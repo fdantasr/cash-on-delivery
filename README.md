@@ -33,4 +33,6 @@ pnpm run dev
 
 ## UI 
 
+A interface de usuário (UI) foi criada por mim, com base em estudos de aplicações do setor, buscando inspirar uma abordagem focada em saúde masculina e desempenho. Essa escolha se reflete nas cores, design e outros elementos visuais, que foram cuidadosamente pensados para transmitir essa identidade
+
 ![Laanding](https://github.com/user-attachments/assets/cce8063e-00a6-4c05-b769-0239cde7052c)
