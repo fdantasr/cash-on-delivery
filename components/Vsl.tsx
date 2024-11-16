@@ -22,7 +22,6 @@ export const Vsl = ({ title, subtitle, urlVideo }: VslProps) => {
 
   return (
     <div className='px-18 relative z-20 mt-20 w-full'>
-      {/* Container flex para centralizar o título */}
       <div className='mb-12 flex w-full flex-col items-start justify-center gap-2'>
         <h3
           className={`${monospaceAI.className} max-w-xs text-2xl/7 font-medium text-[#0b3b3c] lg:max-w-[39.56rem] lg:text-3xl`}
