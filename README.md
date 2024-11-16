@@ -16,3 +16,16 @@ Para rodar o projeto em ambiente de desenvolvimento, utilize o comando:
 
 ```bash
 pnpm run dev
+```
+
+## Decisões Técnicas para o Projeto:
+
+- **Uso do Next.js**: A escolha pelo Next.js se deve ao fato de que a aplicação é uma landing page e vitrine de produtos, o que torna o SEO um fator crítico. Além disso, o Next.js oferece um ótimo desempenho em projetos que requerem grande volume de listagens dinâmicas, como neste caso.
+
+- **Server-Side Rendering (SSR)**: Optei pelo SSR para garantir uma excelente otimização da aplicação, proporcionando maior velocidade de carregamento e, consequentemente, um melhor desempenho em SEO, especialmente no primeiro carregamento da página.
+
+- **Componentes Client-Side**: Apenas componentes interativos, como cards e elementos que dependem de manipulação da UI/Browser, são renderizados no client-side. Esses componentes são alimentados por dados provenientes de chamadas do servidor, mantendo o equilíbrio entre performance e interatividade.
+
+- **React Query**: Utilizamos o React Query para otimizar as requisições de dados, oferecendo benefícios como cache de dados, paginação eficiente e a possibilidade de expandir o sistema no futuro. Ele é particularmente útil para requisições de tipo PUT e PATCH, que lidam com as mutations de dados.
+
+- **Zod e React Hook Form**: Para validação de formulários, escolhi o Zod, que garante validações seguras e tipadas. Combinado ao React Hook Form, conseguimos um controle eficaz dos formulários, permitindo uma gestão de estado otimizada e uma experiência de desenvolvimento mais fluida.
