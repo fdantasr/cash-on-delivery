@@ -58,16 +58,7 @@ export const CardProduct = ({
     resolver: zodResolver(orderSchema),
   });
 
-  // const handleSubmit = hookFormHandleSubmit(
-  //   (data) => {
-  //     console.log('Formulário enviado com sucesso!');
-  //     console.log('Dados do formulário:', data);
-  //   },
-  //   (errors) => {
-  //     console.error('Erros encontrados no formulário:', errors);
-  //   }
-  // );
-
+  
   const { mutateAsync, isPending } = useOrder();
 
   const handleSubmit = hookFormHandleSubmit(
