@@ -1,4 +1,3 @@
 #!/bin/sh
-. "$(dirname -- "$0")/_/husky.sh"
-
-npx --no -- commitlint --edit ${1}
+# O novo formato do Husky v9
+npx --no-install commitlint --edit "$1"
