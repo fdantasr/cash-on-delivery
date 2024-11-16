@@ -5,7 +5,7 @@ Antes de começar, certifique-se de ter o pnpm instalado em sua máquina. Caso n
 
 ```bash
 npm install -g pnpm
-
+```
 Depois, instale as dependências do projeto:
 
 ```bash
