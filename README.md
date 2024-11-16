@@ -29,3 +29,8 @@ pnpm run dev
 - **React Query**: Utilizei o React Query para otimizar as requisições de dados, oferecendo benefícios como cache de dados, paginação eficiente e a possibilidade de expandir o sistema no futuro. Ele é particularmente útil para requisições de tipo PUT e PATCH, que lidam com as mutations de dados.
 
 - **Zod e React Hook Form**: Para validação de formulários, escolhi o Zod, que garante validações seguras e tipadas. Combinado ao React Hook Form, conseguimos um controle eficaz dos formulários, permitindo uma gestão de estado otimizada e uma experiência de desenvolvimento mais fluida.
+
+
+## UI 
+
+![Laanding](https://github.com/user-attachments/assets/cce8063e-00a6-4c05-b769-0239cde7052c)
