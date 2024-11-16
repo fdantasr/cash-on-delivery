@@ -1,3 +1,4 @@
+'use client';
 interface PartenersProps {}
 
 export const Parteners = ({}: PartenersProps) => {

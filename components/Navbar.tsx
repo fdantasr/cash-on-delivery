@@ -1,4 +1,5 @@
 'use client';
+
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, Search } from 'lucide-react';
 import { Montserrat } from 'next/font/google';

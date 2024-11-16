@@ -2,7 +2,6 @@ import { BaseResponse } from "@/entities";
 import type { PurchaseFormData } from "@/entities/purchaseEntity";
 import { GenericFetch } from "@/utils/genericFetch";
 
-// Alterando a tipagem para retornar o PurchaseFormData correto
 export async function submitPurchaseForm(data: PurchaseFormData): Promise<PurchaseFormData> {
   const token = '2A50C22E-7954-4C73-9CF9-F6D298C047A7';
   const url = `https://api-candidate.ogruposix.com/buy/${data.product_id}`;
@@ -33,7 +32,7 @@ export async function submitPurchaseForm(data: PurchaseFormData): Promise<Purcha
 
     if (status === 'success') {
       if (res?.object) {
-        return res.object; // Retorna o objeto, se existir
+        return res.object; 
       } else {
         console.warn('API não retornou `object`. Reconstruindo dados...');
         return data; // Retorna os dados enviados como fallback

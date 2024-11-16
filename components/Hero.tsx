@@ -1,3 +1,5 @@
+'use client';
+
 import { Afacad } from 'next/font/google';
 import { Button } from './ui/button';
 
@@ -17,10 +19,9 @@ export const Hero = ({}: HeroProps) => {
           <h1
             className={`text-center text-[42px] font-semibold uppercase italic leading-[42px] tracking-normal text-white md:text-start md:text-[110px] md:leading-[110px] ${afacad.className}`}
           >
-            
             Cuide do que te fortalece
           </h1>
-          <Button className='relative  rounded-none bg-[#0b3b3c] px-[60px] py-7 text-xl font-medium text-white'>
+          <Button className='relative rounded-none bg-[#0b3b3c] px-[60px] py-7 text-xl font-medium text-white'>
             Compre agora
           </Button>
         </div>
