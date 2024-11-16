@@ -31,7 +31,7 @@ pnpm run dev
 
 - **Zod e React Hook Form**: Para validação de formulários, escolhi o Zod, que garante validações seguras e tipadas. Combinado ao React Hook Form, conseguimos um controle eficaz dos formulários, permitindo uma gestão de estado otimizada e uma experiência de desenvolvimento mais fluida.
 
--** Fetch**: Normalmente usaria o Axios para facilitar a criação das chamadas Rest, BaseURLS e muito mais , no entanto como eram apenas 2 rotas, implementei um Generic Fetch.
+- **Fetch**: Normalmente usaria o Axios para facilitar a criação das chamadas Rest, BaseURLS e muito mais , no entanto como eram apenas 2 rotas, implementei um Generic Fetch.
 
 
 ## UI 
