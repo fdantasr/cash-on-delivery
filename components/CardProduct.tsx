@@ -2,7 +2,9 @@
 
 import { useOrder } from '@/hooks/useOrder';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 import { z } from 'zod';
 import {
   Dialog,
@@ -27,8 +29,8 @@ const orderSchema = z.object({
   city: z.string().nonempty('Cidade é obrigatória'),
   state: z.string().nonempty('Estado é obrigatório'),
   product_id: z.number().optional(),
-  
 });
+
 
 type OrderFormData = z.infer<typeof orderSchema>;
 
@@ -58,7 +60,8 @@ export const CardProduct = ({
     resolver: zodResolver(orderSchema),
   });
 
-  
+  const router = useRouter();
+
   const { mutateAsync, isPending } = useOrder();
 
   const handleSubmit = hookFormHandleSubmit(
@@ -68,19 +71,19 @@ export const CardProduct = ({
         const response = await mutateAsync(payload);
         console.log('Compra realizada com sucesso!', response);
   
-        // Exibir os dados retornados
-        alert(
+        toast.success(
           `Compra criada com sucesso:\n${JSON.stringify(response, null, 2)}`
         );
       } catch (error) {
         console.error('Erro ao realizar a compra', error);
+      } finally {
+        router.push('/thank-you');
       }
     },
     (errors) => {
       console.error('Erros encontrados no formulário:', errors);
     }
   );
-  
 
   return (
     <div className='relative flex w-full flex-col overflow-hidden rounded-md bg-card md:max-w-xs'>
@@ -122,20 +125,20 @@ export const CardProduct = ({
             </button>
           </DialogTrigger>
 
-          <DialogContent aria-describedby='' className='!p-6'>
+          <DialogContent aria-describedby='' className='!p-6 w-11/12 sm:max-w-md'>
             <DialogHeader>
               <DialogTitle className='text-lg'>
                 Confirme suas informações
               </DialogTitle>
             </DialogHeader>
-            <div className='grid grid-cols-1 gap-8 lg:grid-cols-2'>
+            <div className='grid grid-cols-1 gap-8'>
               <div className='grid gap-4'>
                 <form onSubmit={handleSubmit} className='space-y-4'>
                   <Input
                     {...register('name')}
                     placeholder='Nome'
                     id='name'
-                    className='col-span-1 !h-[52px] border-[#e3e1df]'
+                    className='col-span-1 border-[#e3e1df]'
                   />
                   {errors.name && (
                     <p className='text-red-600'>{errors.name.message}</p>
@@ -145,7 +148,7 @@ export const CardProduct = ({
                     {...register('email')}
                     placeholder='Email'
                     id='email'
-                    className='col-span-1 !h-[52px] border-[#e3e1df]'
+                    className='col-span-1 border-[#e3e1df]'
                   />
                   {errors.email && (
                     <p className='text-red-600'>{errors.email.message}</p>
@@ -155,7 +158,7 @@ export const CardProduct = ({
                     {...register('phone_number')}
                     placeholder='Número de Telefone'
                     id='phone_number'
-                    className='col-span-1 !h-[52px] border-[#e3e1df]'
+                    className='col-span-1 border-[#e3e1df]'
                   />
                   {errors.phone_number && (
                     <p className='text-red-600'>
@@ -167,7 +170,7 @@ export const CardProduct = ({
                     {...register('street_number', { valueAsNumber: true })}
                     placeholder='Número da Rua'
                     id='street_number'
-                    className='col-span-1 !h-[52px] border-[#e3e1df]'
+                    className='col-span-1 border-[#e3e1df]'
                   />
                   {errors.street_number && (
                     <p className='text-red-600'>
@@ -179,7 +182,7 @@ export const CardProduct = ({
                     {...register('street')}
                     placeholder='Rua'
                     id='street'
-                    className='col-span-1 !h-[52px] border-[#e3e1df]'
+                    className='col-span-1 border-[#e3e1df]'
                   />
                   {errors.street && (
                     <p className='text-red-600'>{errors.street.message}</p>
@@ -189,7 +192,7 @@ export const CardProduct = ({
                     {...register('district')}
                     placeholder='Bairro'
                     id='district'
-                    className='col-span-1 !h-[52px] border-[#e3e1df]'
+                    className='col-span-1 border-[#e3e1df]'
                   />
                   {errors.district && (
                     <p className='text-red-600'>{errors.district.message}</p>
@@ -199,7 +202,7 @@ export const CardProduct = ({
                     {...register('city')}
                     id='city'
                     placeholder='Cidade'
-                    className='col-span-1 !h-[52px] border-[#e3e1df]'
+                    className='col-span-1 border-[#e3e1df]'
                   />
                   {errors.city && (
                     <p className='text-red-600'>{errors.city.message}</p>
@@ -209,13 +212,13 @@ export const CardProduct = ({
                     {...register('state')}
                     placeholder='Estado'
                     id='state'
-                    className='col-span-1 !h-[52px] border-[#e3e1df]'
+                    className='col-span-1 border-[#e3e1df]'
                   />
                   {errors.state && (
                     <p className='text-red-600'>{errors.state.message}</p>
                   )}
 
-                  {/* Botão de Submissão */}
+         
                   <button
                     type='submit'
                     disabled={isPending} // desabilitar quando estiver enviando
@@ -224,45 +227,6 @@ export const CardProduct = ({
                     {isPending ? 'Processando...' : 'Finalizar Compra'}
                   </button>
                 </form>
-              </div>
-
-              {/* Descrição do Produto */}
-              <div className='h-max rounded-lg bg-card p-6 shadow-lg'>
-                <div className='hero-prod-texts'>
-                  <div className='hero-heading-container mt-4'>
-                    <h1 className='hero-product-h1 text-3xl font-semibold'>
-                      {productName}
-                    </h1>
-                  </div>
-                  <div className='sub-title mt-2 text-lg text-gray-500'>
-                    <div> - R$ {discount.toFixed(2)}</div>
-                  </div>
-
-                  <div className='hero-cta-box mt-6 rounded-lg border p-4'>
-                    <div className='hero-cta-price text-xl font-medium text-gray-800'>
-                      Você pagará R$ {totalPrice.toFixed(2)} na entrega
-                    </div>
-                    <div className='hero-cta-text text-sm text-gray-600'>
-                      Você só será cobrado na entrega do produto.
-                    </div>
-                    {/* <button className="btn-primary full-width w-button w-full mt-4 block rounded-lg bg-[#0b3b3c] px-4 py-2 text-center text-base text-white">
-                        Confirmar pedido
-                      </button> */}
-                    <div className='cta-icon mt-4 flex items-center'>
-                      <img
-                        src='https://cdn.prod.website-files.com/64ac367920744d8ec5cb556f/650c3312053505ea92b263f1_free-nextDay-delivery-primary.svg'
-                        loading='lazy'
-                        alt=''
-                        className='mr-2 h-5 w-5'
-                      />
-                      <div className='hero-cta-text bold text-sm text-gray-800'>
-                        {freight === 'Frete grátis'
-                          ? 'Frete grátis'
-                          : 'Entrega em até 24h'}
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </DialogContent>
