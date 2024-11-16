@@ -1,4 +1,4 @@
-## 📦 Instalação do Projeto com pnpm
+## Instalação do Projeto com pnpm
 
 📦 Instalação do Projeto com [`pnpm`].
 Antes de começar, certifique-se de ter o pnpm instalado em sua máquina. Caso não tenha, instale-o com o comando:
