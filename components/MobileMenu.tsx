@@ -10,42 +10,35 @@ export const MobileMenu = ({}: MobileMenuProps) => {
           <div className='flex flex-col justify-start'>
             <p className='text-base text-black'>
               <a className='text-blue-500 underline' href='./shop'>
-                Shop
+                TRATAMENTOS
               </a>
             </p>
           </div>
           <div className='flex flex-col justify-start'>
             <p className='text-base text-black'>
               <a className='text-blue-500 underline' href='./category/men'>
-                Men
+                APRENDA
               </a>
             </p>
           </div>
           <div className='flex flex-col justify-start'>
             <p className='text-base text-black'>
               <a className='text-blue-500 underline' href='./category/women'>
-                Women
+                BLOG
               </a>
             </p>
           </div>
           <div className='flex flex-col justify-start'>
             <p className='text-base text-black'>
               <a className='text-blue-500 underline' href='./category/kid'>
-                Kids
+                SOBRE
               </a>
             </p>
           </div>
           <div className='flex flex-col justify-start'>
             <p className='text-base text-black'>
               <a className='text-blue-500 underline' href='./category/about'>
-                About
-              </a>
-            </p>
-          </div>
-          <div className='flex flex-col justify-start'>
-            <p className='text-base text-black'>
-              <a className='text-blue-500 underline' href='./category/contact'>
-                Contact
+                CONTATO
               </a>
             </p>
           </div>
