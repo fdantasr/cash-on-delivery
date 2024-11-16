@@ -26,6 +26,6 @@ pnpm run dev
 
 - **Componentes Client-Side**: Apenas componentes interativos, como cards e elementos que dependem de manipulação da UI/Browser, são renderizados no client-side. Esses componentes são alimentados por dados provenientes de chamadas do servidor, mantendo o equilíbrio entre performance e interatividade.
 
-- **React Query**: Utilizamos o React Query para otimizar as requisições de dados, oferecendo benefícios como cache de dados, paginação eficiente e a possibilidade de expandir o sistema no futuro. Ele é particularmente útil para requisições de tipo PUT e PATCH, que lidam com as mutations de dados.
+- **React Query**: Utilizei o React Query para otimizar as requisições de dados, oferecendo benefícios como cache de dados, paginação eficiente e a possibilidade de expandir o sistema no futuro. Ele é particularmente útil para requisições de tipo PUT e PATCH, que lidam com as mutations de dados.
 
 - **Zod e React Hook Form**: Para validação de formulários, escolhi o Zod, que garante validações seguras e tipadas. Combinado ao React Hook Form, conseguimos um controle eficaz dos formulários, permitindo uma gestão de estado otimizada e uma experiência de desenvolvimento mais fluida.
