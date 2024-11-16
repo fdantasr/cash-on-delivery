@@ -1,16 +1,18 @@
-import React from 'react';
-
 const ThankYouPage = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center mx-5 md:mx-auto">
-      <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
-        <div className="text-center">
-          <h1 className="text-3xl font-semibold text-green-500 mb-4">Obrigado!</h1>
-          <p className="text-lg text-gray-600 mb-6">
-            Sua compra foi realizada com sucesso. Em breve você receberá um email com os detalhes da sua compra.
-            
+    <div className='mx-5 flex min-h-screen items-center justify-center md:mx-auto'>
+      <div className='w-full max-w-md rounded-lg bg-white p-8 shadow-lg'>
+        <div className='text-center'>
+          <h1 className='mb-4 text-3xl font-semibold text-green-500'>
+            Obrigado!
+          </h1>
+          <p className='mb-6 text-lg text-gray-600'>
+            Sua compra foi realizada com sucesso. Em breve você receberá um
+            email com os detalhes da sua compra.
           </p>
-          <a href="/" className="text-blue-500 hover:text-blue-700 font-medium">Voltar para a página inicial</a>
+          <a href='/' className='font-medium text-blue-500 hover:text-blue-700'>
+            Voltar para a página inicial
+          </a>
         </div>
       </div>
     </div>

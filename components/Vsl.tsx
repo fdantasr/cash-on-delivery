@@ -90,7 +90,7 @@ export const Vsl = ({ title, subtitle, urlVideo }: VslProps) => {
                 </svg>
               </button>
               <p className='w-full text-center text-sm font-bold text-white lg:max-w-[13.4375rem] lg:text-center lg:text-base'>
-                Aperte o play e conheça a Street
+                Aperte o play e conheça a SuperPack
               </p>
             </div>
           )}
