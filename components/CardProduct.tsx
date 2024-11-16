@@ -3,7 +3,6 @@
 import { useOrder } from '@/hooks/useOrder';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { toast } from 'sonner';
 import { z } from 'zod';
 import {
   Dialog,
@@ -15,20 +14,14 @@ import {
 import { Input } from './ui/input';
 
 const orderSchema = z.object({
-  name: z.string().nonempty('Nome é obrigatório'),
-  email: z.string().email('Email inválido'),
-  phone_number: z
-    .string()
-    .min(10, 'Número de telefone deve ter pelo menos 10 dígitos'),
-  street_number: z
-    .number()
-    .int()
-    .positive('Número da rua deve ser um número válido'),
-  street: z.string().nonempty('Rua é obrigatória'),
-  district: z.string().nonempty('Bairro é obrigatório'),
-  city: z.string().nonempty('Cidade é obrigatória'),
-  state: z.string().nonempty('Estado é obrigatório'),
-  product_id: z.number(),
+name: z.string().nonempty('Nome é obrigatório'),
+email: z.string().email('Email inválido'),
+phone_number: z.number().min(11, 'Telefone inválido'),
+street_number: z.number().min(1, 'Número da rua inválido'),
+street: z.string().nonempty('Rua é obrigatório'),
+district: z.string().nonempty('Bairro é obrigatório'),
+city: z.string().nonempty('Cidade é obrigatório'),
+state: z.string().nonempty('Estado é obrigatório'),
 });
 
 type OrderFormData = z.infer<typeof orderSchema>;
@@ -53,28 +46,19 @@ export const CardProduct = ({
 }: CardProductProps) => {
   const {
     register,
-    handleSubmit,
     formState: { errors },
+    handleSubmit: hookFormHandleSubmit,
   } = useForm<OrderFormData>({
     resolver: zodResolver(orderSchema),
   });
 
+  const handleSubmit = hookFormHandleSubmit((data) => {
+    console.log('Formulário enviado com sucesso!');
+    console.log('Dados do formulário:', data);
+  });
+
   // Pegando o mutateAsync de useOrder
   const { mutateAsync, isPending } = useOrder();
-
-  const onSubmit = async (data: OrderFormData) => {
-    console.log('Formulário submetido com os dados:', data);
-    const formData = { ...data, product_id: idProduct };
-
-    try {
-      console.log('Chamada de mutateAsync com dados:', formData); // Log para verificar dados
-      await mutateAsync(formData); // Tente fazer a mutação
-      toast('Compra realizada com sucesso');
-    } catch (error) {
-      console.error('Erro ao realizar compra:', error);
-      toast.error('Erro ao realizar a compra');
-    }
-  };
 
   return (
     <div className='relative flex w-full flex-col overflow-hidden rounded-md bg-card md:max-w-xs'>
@@ -116,7 +100,7 @@ export const CardProduct = ({
             </button>
           </DialogTrigger>
 
-          <DialogContent className='!p-6'>
+          <DialogContent aria-describedby='' className='!p-6'>
             <DialogHeader>
               <DialogTitle className='text-lg'>
                 Confirme suas informações
@@ -124,7 +108,7 @@ export const CardProduct = ({
             </DialogHeader>
             <div className='grid grid-cols-1 gap-8 lg:grid-cols-2'>
               <div className='grid gap-4'>
-                <form onSubmit={handleSubmit(onSubmit)} className='space-y-4'>
+                <form onSubmit={handleSubmit} className='space-y-4'>
                   <Input
                     {...register('name')}
                     placeholder='Nome'
@@ -146,9 +130,10 @@ export const CardProduct = ({
                   )}
 
                   <Input
-                    {...register('phone_number')}
+                    {...register('phone_number', { valueAsNumber:true })}
                     placeholder='Número de Telefone'
                     id='phone_number'
+                 
                     className='col-span-1 !h-[52px] border-[#e3e1df]'
                   />
                   {errors.phone_number && (
@@ -158,11 +143,10 @@ export const CardProduct = ({
                   )}
 
                   <Input
-                    {...register('street_number', { valueAsNumber: true })}
+                    {...register('street_number',{ valueAsNumber:true })}
                     placeholder='Número da Rua'
                     id='street_number'
                     className='col-span-1 !h-[52px] border-[#e3e1df]'
-                    type='number'
                   />
                   {errors.street_number && (
                     <p className='text-red-600'>
