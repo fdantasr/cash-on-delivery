@@ -14,14 +14,19 @@ import {
 import { Input } from './ui/input';
 
 const orderSchema = z.object({
-name: z.string().nonempty('Nome é obrigatório'),
-email: z.string().email('Email inválido'),
-phone_number: z.number().min(11, 'Telefone inválido'),
-street_number: z.number().min(1, 'Número da rua inválido'),
-street: z.string().nonempty('Rua é obrigatório'),
-district: z.string().nonempty('Bairro é obrigatório'),
-city: z.string().nonempty('Cidade é obrigatório'),
-state: z.string().nonempty('Estado é obrigatório'),
+  name: z.string().nonempty('Nome é obrigatório'),
+  email: z.string().email('Email inválido'),
+  phone_number: z
+    .string()
+    .min(8, 'O número de telefone deve ter no mínimo 8 dígitos')
+    .max(15, 'O número de telefone deve ter no máximo 15 dígitos')
+    .regex(/^\d+$/, 'O número de telefone deve conter apenas dígitos'),
+  street_number: z.number().positive('Número da rua é obrigatório'),
+  street: z.string().nonempty('Rua é obrigatória'),
+  district: z.string().nonempty('Bairro é obrigatório'),
+  city: z.string().nonempty('Cidade é obrigatória'),
+  state: z.string().nonempty('Estado é obrigatório'),
+  
 });
 
 type OrderFormData = z.infer<typeof orderSchema>;
@@ -52,13 +57,26 @@ export const CardProduct = ({
     resolver: zodResolver(orderSchema),
   });
 
-  const handleSubmit = hookFormHandleSubmit((data) => {
-    console.log('Formulário enviado com sucesso!');
-    console.log('Dados do formulário:', data);
-  });
-
+  const handleSubmit = hookFormHandleSubmit(
+    (data) => {
+      console.log('Formulário enviado com sucesso!');
+      console.log('Dados do formulário:', data);
+    },
+    (errors) => {
+      console.error('Erros encontrados no formulário:', errors);
+    }
+  );
   // Pegando o mutateAsync de useOrder
   const { mutateAsync, isPending } = useOrder();
+
+  // const handleSubmit = hookFormHandleSubmit(async (data) => {
+  //   try {
+  //     await mutateAsync(data);
+  //     console.log('Compra realizada com sucesso!');
+  //   } catch (error) {
+  //     console.error('Erro ao realizar a compra', error);
+  //   }
+  // });
 
   return (
     <div className='relative flex w-full flex-col overflow-hidden rounded-md bg-card md:max-w-xs'>
@@ -130,10 +148,9 @@ export const CardProduct = ({
                   )}
 
                   <Input
-                    {...register('phone_number', { valueAsNumber:true })}
+                    {...register('phone_number')}
                     placeholder='Número de Telefone'
                     id='phone_number'
-                 
                     className='col-span-1 !h-[52px] border-[#e3e1df]'
                   />
                   {errors.phone_number && (
@@ -143,7 +160,7 @@ export const CardProduct = ({
                   )}
 
                   <Input
-                    {...register('street_number',{ valueAsNumber:true })}
+                    {...register('street_number', { valueAsNumber: true })}
                     placeholder='Número da Rua'
                     id='street_number'
                     className='col-span-1 !h-[52px] border-[#e3e1df]'
